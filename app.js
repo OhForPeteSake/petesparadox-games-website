@@ -21,3 +21,29 @@ for (const form of document.querySelectorAll('form[data-form]')) {
     finally { button.disabled = false; button.innerHTML = original; }
   });
 }
+
+// Animate the approved lockup as one intact image; the artwork is never redrawn.
+const logoFrame = document.querySelector('.hero-art');
+const logo = logoFrame?.querySelector('img');
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+let logoAnimations = [];
+function startLogoMotion() {
+  logoAnimations.forEach(animation => animation.cancel());
+  logoAnimations = [];
+  if (!logo || motionPreference.matches || !logo.animate) return;
+  logoAnimations.push(logo.animate([
+    { opacity: 0, transform: 'scale(.96) translateY(8px)' },
+    { opacity: 1, transform: 'scale(1.015) translateY(-2px)', offset: .65 },
+    { opacity: 1, transform: 'scale(1) translateY(0)' }
+  ], { duration: 1200, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }));
+  logoAnimations.push(logoFrame.animate([
+    { boxShadow: '0 0 0px rgba(0,237,10,0)' },
+    { boxShadow: '0 0 55px rgba(0,237,10,.19)', offset: .55 },
+    { boxShadow: '0 0 80px rgba(0,237,10,.04)' }
+  ], { duration: 1700, easing: 'ease-out' }));
+}
+if (logo) {
+  if (logo.complete) startLogoMotion();
+  else logo.addEventListener('load', startLogoMotion, { once: true });
+  motionPreference.addEventListener('change', startLogoMotion);
+}
