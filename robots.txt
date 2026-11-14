@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://petesparadox.games/sitemap.xml
