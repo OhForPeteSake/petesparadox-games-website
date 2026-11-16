@@ -14,3 +14,26 @@
 @keyframes signal-glow { 0%, 100% { box-shadow: 0 0 40px rgba(0,237,10,.04); border-color: #273327; } 50% { box-shadow: 0 0 65px rgba(0,237,10,.19); border-color: #286a2a; } }
 @keyframes signal-spin { to { transform: rotate(360deg); } }
 @keyframes ticker-roll { to { transform: translateX(-50%); } }
+
+/* Paradox Sort feature and support page */
+.games-feature { border-top:1px solid var(--line); }
+.games-card { display:grid; grid-template-columns:minmax(180px, .65fr) 1.35fr; gap:clamp(2rem,6vw,6rem); align-items:center; background:#101510; border:1px solid #344134; padding:clamp(1.4rem,3vw,3rem); }
+.games-card img { display:block; width:100%; max-width:330px; border-radius:12%; }
+.games-card h2 { margin-bottom:1rem; }
+.games-card p:not(.eyebrow) { color:#b5c0b3; line-height:1.7; max-width:560px; }
+.game-hero { display:grid; grid-template-columns:1fr 1fr; gap:clamp(3rem,8vw,8rem); align-items:center; padding-top:clamp(4rem,8vw,8rem); padding-bottom:var(--space); }
+.game-hero h1 { font-size:clamp(4.5rem,9vw,9rem); }
+.game-tagline { font-size:clamp(1.6rem,3vw,2.5rem); font-weight:800; letter-spacing:-.04em; line-height:1.2; }
+.game-art { position:relative; background:#0a0718; border:1px solid #544780; padding:clamp(2.5rem,5vw,4rem); box-shadow:0 0 70px #6a31e42b; }
+.game-art img { display:block; width:100%; max-width:500px; margin:auto; border-radius:12%; }
+.game-art-label,.game-art-bottom { position:absolute; left:1rem; right:1rem; font-size:.55rem; letter-spacing:.15em; font-weight:800; color:#c0addc; }
+.game-art-label { top:1rem; }.game-art-bottom { bottom:1rem; display:flex; justify-content:space-between; }.game-art-bottom span { color:var(--green); }
+.store-note { color:#a4ada2; font-size:.8rem; line-height:1.5; margin:1.5rem 0 0; }
+.game-about { background:#101610; border-block:1px solid #243024; padding:var(--space) 0; }
+.game-about-grid,.support-grid { display:grid; grid-template-columns:1fr 1fr; gap:clamp(3rem,8vw,8rem); }
+.game-description { color:#b5c0b3; font-size:1.1rem; line-height:1.8; align-self:center; }
+.support-card { background:#101510; border:1px solid #344134; padding:clamp(1.5rem,3vw,3rem); align-self:start; }
+.support-card h3 { font-size:clamp(2rem,3vw,3rem); letter-spacing:-.05em; margin:0 0 1rem; }.support-card p:not(.eyebrow) { color:#b5c0b3; line-height:1.7; }
+.support-address a { color:var(--ink); text-decoration:underline; text-underline-offset:.2em; overflow-wrap:anywhere; }
+@media(max-width:850px) { .game-hero,.game-about-grid,.support-grid { grid-template-columns:1fr; } .game-art { max-width:600px; } }
+@media(max-width:600px) { .games-card { grid-template-columns:1fr; }.games-card img { max-width:220px; }.game-hero h1 { font-size:clamp(4rem,17vw,7rem); } }
